@@ -1,6 +1,6 @@
-import { metroLinesColor, type MetroStation } from "./type";
+import { metroLinesColor } from "./metro-util.js";
 
-export const metroStationData: { [key: string]: MetroStation } = {
+export const metroStationData = {
   Rithala_Red: {
     id: 1,
     name: "Rithala",

@@ -9,7 +9,7 @@ import {
   AlertDescription,
   AlertTitle,
 } from "@/components/ui/alert";
-import type { Alert } from "@/lib/data/type";
+import type { Alert } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { CiCircleAlert } from "react-icons/ci";
 

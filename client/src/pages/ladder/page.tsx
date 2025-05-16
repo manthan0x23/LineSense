@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import {
   Card,
@@ -24,11 +22,14 @@ import Cookies from "js-cookie";
 import { application } from "@/lib/utils";
 import { useNavigate } from "react-router";
 import type { Route, RouteType } from "@/store/useRouteStore";
-import { metroLines } from "@/lib/data/metro-lines";
 import { TbTrain } from "react-icons/tb";
+import { useLadderData } from "@/lib/hooks/useLadderData";
+import { AdminPannelButton } from "../admin/admin-pannel-button";
+
 
 const Page = () => {
   const navigate = useNavigate();
+  const Lines = useLadderData();
   const [selectedLineId, setSelectedLineId] = useState<number | null>(null);
   const [startStationId, setStartStationId] = useState<number | null>(null);
   const [endStationId, setEndStationId] = useState<number | null>(null);
@@ -36,7 +37,7 @@ const Page = () => {
     []
   );
 
-  const selectedLine = metroLines.find((line) => line.id === selectedLineId);
+  const selectedLine = Lines.find((line) => line.id === selectedLineId);
   const stations = selectedLine?.stations || [];
 
   const handleLineChange = (val: string) => {
@@ -69,6 +70,7 @@ const Page = () => {
   const storeDataAsCookie = (type: RouteType): void => {
     const data: Route = {
       type,
+      Line: null,
       lineId: selectedLineId,
       startStationId,
       endStationId,
@@ -91,7 +93,9 @@ const Page = () => {
   };
 
   return (
-    <div className="h-full w-full flex items-center justify-center p-6">
+
+    <div className="h-full w-full flex items-center justify-center p-6 relative">
+      <AdminPannelButton />
       <Card className="w-full max-w-xl">
         <CardHeader>
           <CardTitle className="flex gap-3 justify-start items-center text-xl">
@@ -110,7 +114,7 @@ const Page = () => {
                 <SelectValue placeholder="Select a line" />
               </SelectTrigger>
               <SelectContent>
-                {metroLines.map((line) => {
+                {Lines.map((line) => {
                   console.log(line);
 
                   return (

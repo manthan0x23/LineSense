@@ -7,6 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const application = {
   routeConfigLiteral: "route-config",
+  server: import.meta.env.VITE_SERVER_URL,
 };
 
 export function getMutedDarkColor(hex: string): string {

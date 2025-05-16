@@ -1,6 +1,4 @@
-import type { Point } from "../type";
-
-export const yellowLinePolyline: Point[] = [
+export const yellowLinePolyline = [
   {
     latitude: 28.7446158,
     longitude: 77.1382654,

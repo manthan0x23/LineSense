@@ -1,10 +1,10 @@
-import { metroStationData } from "./metro-stations";
-import { magentaLinePolyline } from "./lines/magenta-line";
-import { metroLinesColor, type MetroLine } from "./type";
-import { yellowLinePolyline } from "./lines/yellow-line";
-import { redLinePolyline } from "./lines/red-line";
+import { metroStationData } from "../metro-stations.js";
+import { magentaLinePolyline } from "./magenta-line.js";
+import { yellowLinePolyline } from "./yellow-line.js";
+import { redLinePolyline } from "./red-line.js";
+import { metroLinesColor } from "../metro-util.js";
 
-export const metroLines: MetroLine[] = [
+export const metroLines = [
   {
     name: "Delhi Metro Red Line",
     id: 1,

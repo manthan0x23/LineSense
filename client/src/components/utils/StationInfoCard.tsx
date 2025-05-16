@@ -3,30 +3,28 @@ import { Badge } from "@/components/ui/badge";
 import { useMemo } from "react";
 import { useSimulationStore } from "@/store/useSimulationStore";
 import { useRouteStore } from "@/store/useRouteStore";
-import type { MetroLine, MetroStation } from "@/lib/data/type";
-import { metroLines } from "@/lib/data/metro-lines";
+import type { MetroLine, MetroStation } from "@/lib/types";
+
 
 export const StationInfoCard = () => {
   const { route } = useRouteStore();
   const { currentPolylineIdx, polyline } = useSimulationStore();
 
-  const line: MetroLine | null = useMemo(() => {
-    return metroLines.find((ml) => ml.id == route.lineId) || null;
-  }, [route.lineId]);
+
 
   const startEnd = useMemo(() => {
-    const start = line?.stations.find((st) => st.id == route.startStationId);
-    const end = line?.stations.find((st) => st.id == route.endStationId);
+    const start = route.Line?.stations.find((st) => st.id == route.startStationId);
+    const end = route.Line?.stations.find((st) => st.id == route.endStationId);
 
     return { start, end };
-  }, [line, route.startStationId, route.endStationId]);
+  }, [route.Line, route.startStationId, route.endStationId]);
 
   const intermediateStations: MetroStation[] = useMemo(() => {
     return (
-      line?.stations.filter((s) => route.intermediateStations.includes(s.id)) ||
+      route.Line?.stations.filter((s) => route.intermediateStations.includes(s.id)) ||
       []
     );
-  }, [route.intermediateStations, line, route.lineId]);
+  }, [route.intermediateStations, route.Line, route.lineId]);
 
   const SorroundStations = useMemo(() => {
     if (!polyline.length) return { prev: null, next: null };

@@ -1,5 +1,5 @@
-import { metroLines } from "@/lib/data/metro-lines";
-import type { MetroLine, MetroStation } from "@/lib/data/type";
+
+import type { MetroLine, MetroStation } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useRouteStore } from "@/store/useRouteStore";
 import { useSimulationStore } from "@/store/useSimulationStore";
@@ -11,16 +11,14 @@ export const IntermediateStations = () => {
   const { route } = useRouteStore();
   const { crossedStationIds } = useSimulationStore();
 
-  const line: MetroLine | null = useMemo(() => {
-    return metroLines.find((ml) => ml.id == route.lineId) || null;
-  }, [route.lineId]);
+
 
   const intermediateStations: MetroStation[] = useMemo(() => {
     return (
-      line?.stations.filter((s) => route.intermediateStations.includes(s.id)) ||
+      route.Line?.stations.filter((s) => route.intermediateStations.includes(s.id)) ||
       []
     );
-  }, [route.intermediateStations, line, route.lineId]);
+  }, [route.intermediateStations, route.Line, route.lineId]);
 
   return (
     <>

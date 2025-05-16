@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Cookies from "js-cookie";
 import { Loader2 } from "lucide-react";
-import type { Point } from "@/lib/data/type";
+import type { Point } from "@/lib/types";
 import { application } from "@/lib/utils";
 
 interface LatLngLiteral {

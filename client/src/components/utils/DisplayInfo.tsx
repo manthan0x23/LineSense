@@ -1,29 +1,25 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { metroLines } from "@/lib/data/metro-lines";
-import type { MetroLine, MetroStation } from "@/lib/data/type";
 import { useRouteStore } from "@/store/useRouteStore";
 import { TbTrain } from "react-icons/tb";
 import { LiaArrowsAltHSolid } from "react-icons/lia";
 import { useMemo } from "react";
 import { FaArrowRight } from "react-icons/fa6";
+import type { MetroStation } from "@/lib/types";
 
 const DisplayInfo = () => {
-  const { route, resetRoute } = useRouteStore((state) => state);
+  const { route, resetRoute, } = useRouteStore((state) => state);
 
-  const line: MetroLine | null = useMemo(() => {
-    return metroLines.find((line) => line.id === route.lineId) || null;
-  }, [route.lineId]);
 
   const startStation: MetroStation | null = useMemo(() => {
-    return line?.stations.find((s) => s.id === route.startStationId) || null;
-  }, [route.startStationId, line]);
+    return route.Line?.stations.find((s) => s.id === route.startStationId) || null;
+  }, [route.startStationId, route.Line]);
 
   const endStation: MetroStation | null = useMemo(() => {
-    return line?.stations.find((s) => s.id === route.endStationId) || null;
-  }, [route.endStationId, line]);
+    return route.Line?.stations.find((s) => s.id === route.endStationId) || null;
+  }, [route.endStationId, route.Line]);
 
-  if (!line || !startStation || !endStation) return null;
+  if (!route.Line || !startStation || !endStation) return null;
 
   const handleCancel = () => {
     resetRoute();
@@ -36,11 +32,11 @@ const DisplayInfo = () => {
         <div className="w-auto h-full flex justify-start items-center gap-3">
           <TbTrain size={34} className="text-muted-foreground" />
           <div className="h-full flex flex-col items-start justify-center gap-1">
-            <p className="text-md font-medium">{line.name}</p>
+            <p className="text-md font-medium">{route.Line.name}</p>
             <p className="flex justify-start items-center gap-3 text-sm">
-              <span className="font-normal">{line.start.name}</span>
-              <LiaArrowsAltHSolid style={{ color: line.color }} />
-              <span className="font-normal">{line.end.name}</span>
+              <span className="font-normal">{route.Line.start.name}</span>
+              <LiaArrowsAltHSolid style={{ color: route.Line.color }} />
+              <span className="font-normal">{route.Line.end.name}</span>
             </p>
           </div>
         </div>
@@ -60,7 +56,7 @@ const DisplayInfo = () => {
             </span>
             <span className="flex justify-start items-center gap-3 text-sm">
               <span className="font-normal">{startStation.name}</span>
-              <FaArrowRight style={{ color: line.color }} />
+              <FaArrowRight style={{ color: route.Line.color }} />
               <span className="font-normal">{endStation.name}</span>
             </span>
           </div>
@@ -69,7 +65,7 @@ const DisplayInfo = () => {
 
       <div
         className="absolute bottom-0 left-0 w-full h-1"
-        style={{ backgroundColor: line.color }}
+        style={{ backgroundColor: route.Line.color }}
       />
     </Card>
   );

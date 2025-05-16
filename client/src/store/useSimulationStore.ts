@@ -1,4 +1,4 @@
-import type { Point } from "@/lib/data/type";
+import type { Point } from "@/lib/types";
 import { create } from "zustand";
 
 export type SimulationStatus = "idle" | "running" | "paused";

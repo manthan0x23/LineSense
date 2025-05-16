@@ -4,8 +4,7 @@ import {
   APIProvider,
   Map as GoogleMap,
 } from "@vis.gl/react-google-maps";
-import { metroLines } from "@/lib/data/metro-lines";
-import type { MetroLine, MetroStation, Point } from "@/lib/data/type";
+import type { MetroLine, MetroStation, Point } from "@/lib/types";
 import { useRouteStore } from "@/store/useRouteStore";
 import { PolylineBetweenStations } from "@/components/utils/Polyline";
 import { useSimulationStore } from "@/store/useSimulationStore";
@@ -20,38 +19,36 @@ const SimulateMap = () => {
   const accelerationInterval = useRef<NodeJS.Timeout | null>(null);
   const fluctuationInterval = useRef<NodeJS.Timeout | null>(null);
 
-  const line: MetroLine | null = useMemo(() => {
-    return metroLines.find((line) => line.id === route.lineId) || null;
-  }, [route.lineId]);
+
 
   const startStation: MetroStation | null = useMemo(() => {
-    return line?.stations.find((s) => s.id === route.startStationId) || null;
-  }, [route.startStationId, line]);
+    return route.Line?.stations.find((s) => s.id === route.startStationId) || null;
+  }, [route.startStationId, route.Line]);
 
   const endStation: MetroStation | null = useMemo(() => {
-    return line?.stations.find((s) => s.id === route.endStationId) || null;
-  }, [route.endStationId, line]);
+    return route.Line?.stations.find((s) => s.id === route.endStationId) || null;
+  }, [route.endStationId, route.Line]);
 
   const polyLinePath: Point[] = useMemo(() => {
     let points: Point[] = [];
 
-    if (!line?.polyline || !startStation || !endStation) return [];
+    if (!route.Line?.polyline || !startStation || !endStation) return [];
 
-    const sit = line.polyline.findIndex(
+    const sit = route.Line.polyline.findIndex(
       (p) => p.isStation && p.stationId == startStation.id
     );
-    const eit = line.polyline.findIndex(
+    const eit = route.Line.polyline.findIndex(
       (p) => p.isStation && p.stationId == endStation.id
     );
 
     if (sit >= eit) {
-      points = line.polyline.slice(eit, sit + 1).reverse();
+      points = route.Line.polyline.slice(eit, sit + 1).reverse();
     } else {
-      points = line.polyline.slice(sit, eit + 1);
+      points = route.Line.polyline.slice(sit, eit + 1);
     }
 
     return points;
-  }, [line, startStation, endStation]);
+  }, [route.Line, startStation, endStation]);
 
   useEffect(() => {
     setPolyline(polyLinePath);
@@ -88,15 +85,15 @@ const SimulateMap = () => {
     };
   }, [status, setSpeed]);
 
-  if (!line || !startStation || !endStation) return null;
+  if (!route.Line || !startStation || !endStation) return null;
 
   const start = { lat: startStation.latitude, lng: startStation.longitude };
   const end = { lat: endStation.latitude, lng: endStation.longitude };
 
   return (
     <APIProvider
-    apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-    libraries={["geometry"]}
+      apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+      libraries={["geometry"]}
     >
       <GoogleMap
         mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
@@ -108,11 +105,11 @@ const SimulateMap = () => {
         <AdvancedMarker position={start} />
         <AdvancedMarker position={end} />
         <IntermediateStations />
-        {line && (
+        {route.Line && (
           <>
             <PolylineBetweenStations
               polyline_={polyLinePath}
-              color={line.color}
+              color={route.Line.color}
             />
             <SimulateBlob
               line={polyLinePath}

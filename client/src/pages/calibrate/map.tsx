@@ -5,8 +5,7 @@ import {
   Map as GoogleMap,
   Pin,
 } from "@vis.gl/react-google-maps";
-import { metroLines } from "@/lib/data/metro-lines";
-import type { MetroLine, MetroStation, Point } from "@/lib/data/type";
+import type { MetroLine, MetroStation, Point } from "@/lib/types";
 import { useRouteStore } from "@/store/useRouteStore";
 import { SimulateBlob } from "@/components/utils/AnimateBlob";
 import { PolylineBetweenStations } from "@/components/utils/Polyline";
@@ -16,48 +15,44 @@ import { LocationGuard } from "./location-guard";
 const CalibrateMap = () => {
   const { route } = useRouteStore((state) => state);
 
-  const line: MetroLine | null = useMemo(() => {
-    return metroLines.find((line) => line.id === route.lineId) || null;
-  }, [route.lineId]);
 
   const startStation: MetroStation | null = useMemo(() => {
-    return line?.stations.find((s) => s.id === route.startStationId) || null;
-  }, [route.startStationId, line]);
+    return route.Line?.stations.find((s) => s.id === route.startStationId) || null;
+  }, [route.startStationId, route.Line]);
 
   const endStation: MetroStation | null = useMemo(() => {
-    return line?.stations.find((s) => s.id === route.endStationId) || null;
-  }, [route.endStationId, line]);
+    return route.Line?.stations.find((s) => s.id === route.endStationId) || null;
+  }, [route.endStationId, route.Line]);
 
   const intermediateStations: MetroStation[] = useMemo(() => {
     return (
-      line?.stations.filter((s) => route.intermediateStations.includes(s.id)) ||
+      route.Line?.stations.filter((s) => route.intermediateStations.includes(s.id)) ||
       []
     );
-  }, [route.intermediateStations, line]);
+  }, [route.intermediateStations, route.Line]);
 
   const polyLinePath: Point[] = useMemo(() => {
     let points: Point[] = [];
 
-    if (!line?.polyline || !startStation || !endStation) return [];
+    if (!route.Line?.polyline || !startStation || !endStation) return [];
 
-    const sit = line.polyline.findIndex(
+    const sit = route.Line.polyline.findIndex(
       (p) => p.isStation && p.stationId == startStation.id
     );
-    const eit = line.polyline.findIndex(
+    const eit = route.Line.polyline.findIndex(
       (p) => p.isStation && p.stationId == endStation.id
     );
 
     if (sit >= eit) {
-      points = line.polyline.slice(eit, sit + 1).reverse();
+      points = route.Line.polyline.slice(eit, sit + 1).reverse();
     } else {
-      points = line.polyline.slice(sit, eit + 1);
+      points = route.Line.polyline.slice(sit, eit + 1);
     }
 
     return points;
-  }, [line, startStation, endStation]);
+  }, [route.Line, startStation, endStation]);
 
-  if (!line || !startStation || !endStation) return null;
-
+  if (!route.Line || !startStation || !endStation) return null;
   const start = { lat: startStation.latitude, lng: startStation.longitude };
   const end = { lat: endStation.latitude, lng: endStation.longitude };
 
@@ -91,11 +86,11 @@ const CalibrateMap = () => {
               />
             </AdvancedMarker>
           ))}
-        {line && (
+        {route.Line && (
           <>
             <PolylineBetweenStations
               polyline_={polyLinePath}
-              color={line.color}
+              color={route.Line.color}
             />
             <LocationGuard line={polyLinePath} maxDistance={30000}>
               <CalibrateBlob line={polyLinePath} />
