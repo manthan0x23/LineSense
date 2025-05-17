@@ -125,22 +125,6 @@
     "isAlert": false
   },
   {
-    "latitude": 28.709957107060884,
-    "longitude": 77.17288021676953,
-    "speed": {
-      "min": 34,
-      "max": 67
-    },
-    "isTurn": 0,
-    "isStation": false,
-    "isAlert": true,
-    "isFixed": false,
-    "alert": {
-      "message": "Steep curve ahead !!",
-      "type": "warning"
-    }
-  },
-  {
     "latitude": 28.7076568,
     "longitude": 77.1755473,
     "speed": {
@@ -258,12 +242,17 @@
     "longitude": 77.2233785,
     "speed": {
       "min": 16,
-      "max": 62
+      "max": 66
     },
     "isTurn": 0,
     "isStation": false,
     "isFixed": true,
-    "isAlert": false
+    "isAlert": true,
+    "message": "Bump !",
+    "alert": {
+      "message": "Bump !",
+      "type": "danger"
+    }
   },
   {
     "latitude": 28.6768508,
@@ -752,22 +741,6 @@
     "stationId": 59,
     "isFixed": true,
     "isAlert": false
-  },
-  {
-    "latitude": 28.494515906864354,
-    "longitude": 77.16346341068962,
-    "speed": {
-      "min": 20,
-      "max": 50
-    },
-    "isTurn": 0,
-    "isStation": false,
-    "isAlert": true,
-    "isFixed": false,
-    "alert": {
-      "message": "Below 50!",
-      "type": "danger"
-    }
   },
   {
     "latitude": 28.4945755,

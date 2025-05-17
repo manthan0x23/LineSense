@@ -20,6 +20,7 @@ dataRouter.get("/line-info/:lineId", async (req, res) => {
       return res.status(404).json({ error: "Line not found" });
     }
     const polyline = await readJsonArrayFile(line.fs);
+    console.log(polyline);
 
     res.json({ ...line, polyline });
   } catch (error) {
