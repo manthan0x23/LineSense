@@ -2,14 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLadderData } from "@/lib/hooks/useLadderData";
 import { TbTrain } from "react-icons/tb";
 import { GoArrowSwitch } from "react-icons/go";
-import { HomeButton } from "./home-button";
 
 const PannelPage = () => {
   const data = useLadderData();
 
   return (
     <div className="h-[100vh] w-[100wh] p-5 relative">
-      <HomeButton />
       <div className="h-[10%] w-full flex p-4 justify-start items-center text-3xl gap-2">
         <TbTrain className="text-muted-foreground" size={33} />
         <p className="font-bold">Routes</p>

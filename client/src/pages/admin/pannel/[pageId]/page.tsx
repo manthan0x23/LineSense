@@ -26,7 +26,6 @@ import {
 import { addPoint } from "@/lib/server-calls/admin/add-point"; // import your deletePoint call here
 import type { Alert, Point } from "@/lib/types";
 import { FaCircle } from "react-icons/fa6";
-import { HomeButton } from "../home-button";
 import { CiEdit } from "react-icons/ci";
 import { toast } from "sonner";
 import { deletePoint } from "@/lib/server-calls/admin/delete-point";
@@ -315,7 +314,6 @@ const RouteLineAdmin = () => {
 
   return (
     <div className="h-[100vh] w-[100vw] flex justify-center items-center relative">
-      <HomeButton />
       <div className="w-full h-full p-4 overflow-hidden rounded-lg">
         <APIProvider
           apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}

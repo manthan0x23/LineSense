@@ -35,7 +35,7 @@ export const LoginPage = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 relative">
             <Card className="w-full max-w-md">
                 <CardHeader>
                     <div className="flex items-center space-x-2">
