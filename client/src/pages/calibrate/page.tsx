@@ -2,10 +2,12 @@ import { useRouteCookies } from "@/lib/hooks/useRouteCookies";
 import DisplayInfo from "../../components/utils/DisplayInfo";
 import CalibrateMap from "./map";
 import { CalibrateSideSection } from "./side-section";
+import { useLineInfo } from "@/lib/hooks/useLineInfo";
 
 export default function Page() {
   useRouteCookies();
-
+  useLineInfo();
+  
   return (
     <div className="h-full w-full flex justify-center items-center p-6">
       <div className="h-full w-2/3">

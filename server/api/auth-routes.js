@@ -54,15 +54,23 @@ authRouter.post("/register", async (req, res) => {
     { expiresIn: "1h" }
   );
 
-  res.cookie("token", token, {
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
-    maxAge: 60 * 60 * 1000,
+  if (process.env.NODE_ENV === "production")
+    res.cookie("token", token, {
+      secure: true,
+      sameSite: "none",
+      maxAge: 60 * 60 * 1000,
+    });
+  else
+    res.cookie("token", token, {
+      secure: false,
+      sameSite: "strict",
+      httpOnly: true,
+      maxAge: 60 * 60 * 1000,
+    });
+  res.status(201).json({
+    message: "User registered successfully",
+    user: newUser.username,
   });
-
-  res
-    .status(201)
-    .json({ message: "User registered successfully", user: newUser.username });
 });
 
 authRouter.post("/login", async (req, res) => {
@@ -90,11 +98,19 @@ authRouter.post("/login", async (req, res) => {
     { expiresIn: "1h" }
   );
 
-  res.cookie("token", token, {
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
-    maxAge: 60 * 60 * 1000,
-  });
+  if (process.env.NODE_ENV === "production")
+    res.cookie("token", token, {
+      secure: true,
+      sameSite: "none",
+      maxAge: 60 * 60 * 1000,
+    });
+  else
+    res.cookie("token", token, {
+      secure: false,
+      sameSite: "strict",
+      httpOnly: true,
+      maxAge: 60 * 60 * 1000,
+    });
 
   res.json({ message: "Login successful", user: user.username });
 });

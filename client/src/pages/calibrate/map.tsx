@@ -5,7 +5,7 @@ import {
   Map as GoogleMap,
   Pin,
 } from "@vis.gl/react-google-maps";
-import type {  MetroStation, Point } from "@/lib/types";
+import type { MetroStation, Point } from "@/lib/types";
 import { useRouteStore } from "@/store/useRouteStore";
 import { PolylineBetweenStations } from "@/components/utils/Polyline";
 import CalibrateBlob from "@/components/utils/CalibrateBlob";
@@ -14,19 +14,23 @@ import { LocationGuard } from "./location-guard";
 const CalibrateMap = () => {
   const { route } = useRouteStore((state) => state);
 
-
   const startStation: MetroStation | null = useMemo(() => {
-    return route.Line?.stations.find((s) => s.id === route.startStationId) || null;
+    return (
+      route.Line?.stations.find((s) => s.id === route.startStationId) || null
+    );
   }, [route.startStationId, route.Line]);
 
   const endStation: MetroStation | null = useMemo(() => {
-    return route.Line?.stations.find((s) => s.id === route.endStationId) || null;
+    return (
+      route.Line?.stations.find((s) => s.id === route.endStationId) || null
+    );
   }, [route.endStationId, route.Line]);
 
   const intermediateStations: MetroStation[] = useMemo(() => {
     return (
-      route.Line?.stations.filter((s) => route.intermediateStations.includes(s.id)) ||
-      []
+      route.Line?.stations.filter((s) =>
+        route.intermediateStations.includes(s.id)
+      ) || []
     );
   }, [route.intermediateStations, route.Line]);
 
@@ -91,7 +95,7 @@ const CalibrateMap = () => {
               polyline_={polyLinePath}
               color={route.Line.color}
             />
-            <LocationGuard line={polyLinePath} maxDistance={30000}>
+            <LocationGuard line={polyLinePath} maxDistance={150}>
               <CalibrateBlob line={polyLinePath} />
             </LocationGuard>
           </>
