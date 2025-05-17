@@ -1002,319 +1002,417 @@ export const metroStationData = {
     speeds: { min: 24, max: 77 },
   },
 
-  dwarka_Blue: {
+  // Blue Line – Main branch (Dwarka Sector 21 to Noida City Centre)
+  DwarkaSector21: {
     id: 160,
-    name: "Dwarka",
-    line: metroLinesColor.Blue,
-    latitude: 28.615,
-    longitude: 77.022808,
-    speeds: { min: 45, max: 80 },
-  },
-  dwarkaSector21_Blue: {
-    id: 161,
     name: "Dwarka Sector 21",
     line: metroLinesColor.Blue,
-    latitude: 28.552222,
-    longitude: 77.058056,
-    speeds: { min: 40, max: 75 },
-  },
-  dwarkaSector14_Blue: {
+    latitude: 28.552349,
+    longitude: 77.058065,
+    speeds: { min: 30, max: 60 },
+  }, //:contentReference[oaicite:0]{index=0}
+  DwarkaSector8: {
+    id: 161,
+    name: "Dwarka Sector 8",
+    line: metroLinesColor.Blue,
+    latitude: 28.565622,
+    longitude: 77.067015,
+    speeds: { min: 32, max: 58 },
+  }, //:contentReference[oaicite:1]{index=1}
+  DwarkaSector9: {
     id: 162,
-    name: "Dwarka Sector 14",
+    name: "Dwarka Sector 9",
     line: metroLinesColor.Blue,
-    latitude: 28.602306,
-    longitude: 77.026,
-    speeds: { min: 42, max: 78 },
-  },
-  dwarkaSector13_Blue: {
+    latitude: 28.5743,
+    longitude: 77.065288,
+    speeds: { min: 28, max: 55 },
+  }, //:contentReference[oaicite:2]{index=2}
+  DwarkaSector10: {
     id: 163,
-    name: "Dwarka Sector 13",
+    name: "Dwarka Sector 10",
     line: metroLinesColor.Blue,
-    latitude: 28.597124,
-    longitude: 77.033374,
-    speeds: { min: 38, max: 72 },
-  },
-  dwarkaSector12_Blue: {
+    latitude: 28.581379,
+    longitude: 77.057006,
+    speeds: { min: 29, max: 52 },
+  }, //:contentReference[oaicite:3]{index=3}
+  DwarkaSector11: {
     id: 164,
-    name: "Dwarka Sector 12",
-    line: metroLinesColor.Blue,
-    latitude: 28.592303,
-    longitude: 77.040682,
-    speeds: { min: 43, max: 76 },
-  },
-  dwarkaSector11_Blue: {
-    id: 165,
     name: "Dwarka Sector 11",
     line: metroLinesColor.Blue,
     latitude: 28.5865,
-    longitude: 77.049389,
-    speeds: { min: 41, max: 79 },
-  },
-  dwarkaSector10_Blue: {
+    longitude: 77.049426,
+    speeds: { min: 31, max: 60 },
+  }, //:contentReference[oaicite:4]{index=4}
+  DwarkaSector12: {
+    id: 165,
+    name: "Dwarka Sector 12",
+    line: metroLinesColor.Blue,
+    latitude: 28.5923,
+    longitude: 77.040695,
+    speeds: { min: 27, max: 56 },
+  }, //:contentReference[oaicite:5]{index=5}
+  DwarkaSector13: {
     id: 166,
-    name: "Dwarka Sector 10",
+    name: "Dwarka Sector 13",
     line: metroLinesColor.Blue,
-    latitude: 28.581099,
-    longitude: 77.057422,
-    speeds: { min: 44, max: 77 },
-  },
-  dwarkaSector9_Blue: {
+    latitude: 28.597861,
+    longitude: 77.032485,
+    speeds: { min: 26, max: 50 },
+  }, //:contentReference[oaicite:6]{index=6}
+  DwarkaSector14: {
     id: 167,
-    name: "Dwarka Sector 9",
+    name: "Dwarka Sector 14",
     line: metroLinesColor.Blue,
-    latitude: 28.574306,
-    longitude: 77.065194,
-    speeds: { min: 39, max: 74 },
-  },
-  dwarkaSector8_Blue: {
+    latitude: 28.6023,
+    longitude: 77.026017,
+    speeds: { min: 25, max: 48 },
+  }, //:contentReference[oaicite:7]{index=7}
+  Dwarka: {
     id: 168,
-    name: "Dwarka Sector 8",
+    name: "Dwarka",
     line: metroLinesColor.Blue,
-    latitude: 28.56562,
-    longitude: 77.06703,
-    speeds: { min: 42, max: 80 },
-  },
-  dwarkaMor_Blue: {
+    latitude: 28.615,
+    longitude: 77.0228,
+    speeds: { min: 33, max: 62 },
+  }, //:contentReference[oaicite:8]{index=8}
+  DwarkaMor: {
     id: 169,
     name: "Dwarka Mor",
     line: metroLinesColor.Blue,
-    latitude: 28.619306,
-    longitude: 77.033389,
-    speeds: { min: 45, max: 82 },
-  },
-  nawada_Blue: {
+    latitude: 28.6193,
+    longitude: 77.0334,
+    speeds: { min: 30, max: 55 },
+  }, //:contentReference[oaicite:9]{index=9}
+  Nawada: {
     id: 170,
     name: "Nawada",
     line: metroLinesColor.Blue,
-    latitude: 28.620194,
-    longitude: 77.045111,
-    speeds: { min: 40, max: 75 },
-  },
-  uttamNagarWest_Blue: {
+    latitude: 28.6202,
+    longitude: 77.0451,
+    speeds: { min: 32, max: 60 },
+  }, //:contentReference[oaicite:10]{index=10}
+  UttamNagarWest: {
     id: 171,
     name: "Uttam Nagar West",
     line: metroLinesColor.Blue,
-    latitude: 28.621728,
-    longitude: 77.055698,
-    speeds: { min: 38, max: 72 },
-  },
-  uttamNagarEast_Blue: {
+    latitude: 28.6219,
+    longitude: 77.0563,
+    speeds: { min: 31, max: 53 },
+  }, //:contentReference[oaicite:11]{index=11}
+  UttamNagarEast: {
     id: 172,
     name: "Uttam Nagar East",
     line: metroLinesColor.Blue,
-    latitude: 28.624786,
-    longitude: 77.065207,
-    speeds: { min: 42, max: 76 },
-  },
-  janakpuriWest_Blue: {
+    latitude: 28.6244,
+    longitude: 77.0651,
+    speeds: { min: 27, max: 49 },
+  }, //:contentReference[oaicite:12]{index=12}
+  JanakpuriWest: {
     id: 173,
     name: "Janakpuri West",
     line: metroLinesColor.Blue,
     latitude: 28.6295,
-    longitude: 77.078194,
-    speeds: { min: 43, max: 78 },
-  },
-  janakpuriEast_Blue: {
+    longitude: 77.0782,
+    speeds: { min: 29, max: 52 },
+  }, //:contentReference[oaicite:13]{index=13}
+  JanakpuriEast: {
     id: 174,
     name: "Janakpuri East",
     line: metroLinesColor.Blue,
-    latitude: 28.633013,
-    longitude: 77.086593,
-    speeds: { min: 41, max: 79 },
-  },
-  tilakNagar_Blue: {
+    latitude: 28.6329,
+    longitude: 77.0862,
+    speeds: { min: 28, max: 54 },
+  }, //:contentReference[oaicite:14]{index=14}
+  TilakNagar: {
     id: 175,
     name: "Tilak Nagar",
     line: metroLinesColor.Blue,
-    latitude: 28.636611,
-    longitude: 77.096389,
-    speeds: { min: 44, max: 77 },
-  },
-  subhashNagar_Blue: {
+    latitude: 28.6366,
+    longitude: 77.0964,
+    speeds: { min: 30, max: 58 },
+  }, //:contentReference[oaicite:15]{index=15}
+  SubhashNagar: {
     id: 176,
     name: "Subhash Nagar",
     line: metroLinesColor.Blue,
-    latitude: 28.640389,
-    longitude: 77.104889,
-    speeds: { min: 39, max: 74 },
-  },
-  tagoreGarden_Blue: {
+    latitude: 28.6404,
+    longitude: 77.1049,
+    speeds: { min: 31, max: 56 },
+  }, //:contentReference[oaicite:16]{index=16}
+  TagoreGarden: {
     id: 177,
     name: "Tagore Garden",
     line: metroLinesColor.Blue,
-    latitude: 28.643694,
-    longitude: 77.112889,
-    speeds: { min: 42, max: 80 },
-  },
-  rajouriGarden_Blue: {
+    latitude: 28.6437,
+    longitude: 77.1129,
+    speeds: { min: 32, max: 54 },
+  }, //:contentReference[oaicite:17]{index=17}
+  RajouriGarden: {
     id: 178,
     name: "Rajouri Garden",
     line: metroLinesColor.Blue,
     latitude: 28.649,
-    longitude: 77.122611,
-    speeds: { min: 45, max: 82 },
-  },
-  rameshNagar_Blue: {
+    longitude: 77.1226,
+    speeds: { min: 30, max: 57 },
+  }, //:contentReference[oaicite:18]{index=18}
+  RameshNagar: {
     id: 179,
     name: "Ramesh Nagar",
     line: metroLinesColor.Blue,
     latitude: 28.653,
     longitude: 77.1315,
-    speeds: { min: 40, max: 75 },
-  },
-  motiNagar_Blue: {
+    speeds: { min: 29, max: 55 },
+  }, //:contentReference[oaicite:19]{index=19}
+  MotiNagar: {
     id: 180,
     name: "Moti Nagar",
     line: metroLinesColor.Blue,
-    latitude: 28.658111,
-    longitude: 77.142611,
-    speeds: { min: 38, max: 72 },
-  },
-  kirtiNagar_Blue: {
+    latitude: 28.6581,
+    longitude: 77.1426,
+    speeds: { min: 27, max: 53 },
+  }, //:contentReference[oaicite:20]{index=20}
+  KirtiNagar: {
     id: 181,
     name: "Kirti Nagar",
     line: metroLinesColor.Blue,
-    latitude: 28.655111,
+    latitude: 28.6551,
     longitude: 77.1515,
-    speeds: { min: 42, max: 76 },
-  },
-  patelNagar_Blue: {
+    speeds: { min: 30, max: 60 },
+  }, //:contentReference[oaicite:21]{index=21}
+  Shadipur: {
     id: 182,
+    name: "Shadipur",
+    line: metroLinesColor.Blue,
+    latitude: 28.652,
+    longitude: 77.1576,
+    speeds: { min: 28, max: 50 },
+  }, //:contentReference[oaicite:22]{index=22}
+  PatelNagar: {
+    id: 183,
     name: "Patel Nagar",
     line: metroLinesColor.Blue,
     latitude: 28.645,
-    longitude: 77.169306,
-    speeds: { min: 43, max: 78 },
-  },
-  shadipur_Blue: {
-    id: 183,
-    name: "Shadipur",
-    line: metroLinesColor.Blue,
-    latitude: 28.651655,
-    longitude: 77.158249,
-    speeds: { min: 41, max: 79 },
-  },
-  rajendraPlace_Blue: {
+    longitude: 77.1693,
+    speeds: { min: 29, max: 55 },
+  }, //:contentReference[oaicite:23]{index=23}
+  RajendraPlace: {
     id: 184,
     name: "Rajendra Place",
     line: metroLinesColor.Blue,
-    latitude: 28.642194,
-    longitude: 77.178306,
-    speeds: { min: 44, max: 77 },
-  },
-  karolBagh_Blue: {
+    latitude: 28.6422,
+    longitude: 77.1783,
+    speeds: { min: 30, max: 52 },
+  }, //:contentReference[oaicite:24]{index=24}
+  KarolBagh: {
     id: 185,
     name: "Karol Bagh",
     line: metroLinesColor.Blue,
-    latitude: 28.643889,
+    latitude: 28.6439,
     longitude: 77.1885,
-    speeds: { min: 39, max: 74 },
-  },
-  jhandewalan_Blue: {
+    speeds: { min: 27, max: 50 },
+  }, //:contentReference[oaicite:25]{index=25}
+  Jhandewalan: {
     id: 186,
     name: "Jhandewalan",
     line: metroLinesColor.Blue,
-    latitude: 28.644389,
-    longitude: 77.199806,
-    speeds: { min: 42, max: 80 },
-  },
-  ramakrishnaAshramMarg_Blue: {
+    latitude: 28.6444,
+    longitude: 77.1998,
+    speeds: { min: 25, max: 48 },
+  }, //:contentReference[oaicite:26]{index=26}
+  RKAshramMarg: {
     id: 187,
     name: "Ramakrishna Ashram Marg",
     line: metroLinesColor.Blue,
-    latitude: 28.639306,
+    latitude: 28.6393,
     longitude: 77.2085,
-    speeds: { min: 45, max: 82 },
-  },
-  rajivChowk_Blue: {
+    speeds: { min: 26, max: 50 },
+  }, //:contentReference[oaicite:27]{index=27}
+  RajivChowk: {
     id: 188,
     name: "Rajiv Chowk",
     line: metroLinesColor.Blue,
-    latitude: 28.632806,
-    longitude: 77.219611,
-    speeds: { min: 40, max: 75 },
-  },
-  barakhambaRoad_Blue: {
+    latitude: 28.6328,
+    longitude: 77.2196,
+    speeds: { min: 28, max: 55 },
+  }, //:contentReference[oaicite:28]{index=28}
+  BarakhambaRd: {
     id: 189,
     name: "Barakhamba Road",
     line: metroLinesColor.Blue,
-    latitude: 28.62998,
-    longitude: 77.224526,
-    speeds: { min: 38, max: 72 },
-  },
-  mandiHouse_Blue: {
+    latitude: 28.6307,
+    longitude: 77.2236,
+    speeds: { min: 27, max: 53 },
+  }, //:contentReference[oaicite:29]{index=29}
+  MandiHouse: {
     id: 190,
     name: "Mandi House",
     line: metroLinesColor.Blue,
-    latitude: 28.625806,
-    longitude: 77.234694,
-    speeds: { min: 42, max: 76 },
-  },
-  supremeCourt_Blue: {
+    latitude: 28.6258,
+    longitude: 77.2347,
+    speeds: { min: 29, max: 58 },
+  }, //:contentReference[oaicite:30]{index=30}
+  SupremeCourt: {
     id: 191,
     name: "Supreme Court",
     line: metroLinesColor.Blue,
-    latitude: 28.623611,
-    longitude: 77.2425,
-    speeds: { min: 43, max: 78 },
-  },
-  indraprastha_Blue: {
+    latitude: 28.62348,
+    longitude: 77.24253,
+    speeds: { min: 25, max: 47 },
+  }, //:contentReference[oaicite:31]{index=31}
+  Indraprastha: {
     id: 192,
     name: "Indraprastha",
     line: metroLinesColor.Blue,
     latitude: 28.6205,
     longitude: 77.25,
-    speeds: { min: 41, max: 79 },
-  },
-  yamunaBank_Blue: {
+    speeds: { min: 26, max: 50 },
+  }, //:contentReference[oaicite:32]{index=32}
+  YamunaBank: {
     id: 193,
     name: "Yamuna Bank",
     line: metroLinesColor.Blue,
-    latitude: 28.623281,
-    longitude: 77.267931,
-    speeds: { min: 44, max: 77 },
-  },
-  laxmiNagar_Blue: {
+    latitude: 28.621,
+    longitude: 77.2601,
+    speeds: { min: 25, max: 45 },
+  }, //:contentReference[oaicite:33]{index=33}
+  Akshardham: {
     id: 194,
-    name: "Laxmi Nagar",
+    name: "Akshardham",
     line: metroLinesColor.Blue,
-    latitude: 28.629247,
-    longitude: 77.275272,
-    speeds: { min: 39, max: 74 },
-  },
-  mayurViharI_Blue: {
+    latitude: 28.6182,
+    longitude: 77.2792,
+    speeds: { min: 28, max: 55 },
+  }, //:contentReference[oaicite:34]{index=34}
+  MayurViharI: {
     id: 195,
     name: "Mayur Vihar-I",
     line: metroLinesColor.Blue,
-    latitude: 28.604134,
-    longitude: 77.289526,
-    speeds: { min: 42, max: 80 },
-  },
-  mayurViharExtension_Blue: {
+    latitude: 28.6047,
+    longitude: 77.2893,
+    speeds: { min: 29, max: 52 },
+  }, //:contentReference[oaicite:35]{index=35}
+  MayurViharExt: {
     id: 196,
     name: "Mayur Vihar Extension",
     line: metroLinesColor.Blue,
-    latitude: 28.594211,
-    longitude: 77.294664,
-    speeds: { min: 45, max: 82 },
-  },
-  kaushambi_Blue: {
+    latitude: 28.5942,
+    longitude: 77.2945,
+    speeds: { min: 27, max: 50 },
+  }, //:contentReference[oaicite:36]{index=36}
+  NewAshokNgr: {
     id: 197,
+    name: "New Ashok Nagar",
+    line: metroLinesColor.Blue,
+    latitude: 28.58916,
+    longitude: 77.302067,
+    speeds: { min: 32, max: 60 },
+  }, //:contentReference[oaicite:37]{index=37}
+  NoidaSector15: {
+    id: 198,
+    name: "Noida Sector 15",
+    line: metroLinesColor.Blue,
+    latitude: 28.584936,
+    longitude: 77.311757,
+    speeds: { min: 30, max: 60 },
+  }, //:contentReference[oaicite:38]{index=38}
+  NoidaSector16: {
+    id: 199,
+    name: "Noida Sector 16",
+    line: metroLinesColor.Blue,
+    latitude: 28.578549,
+    longitude: 77.317454,
+    speeds: { min: 28, max: 55 },
+  }, //:contentReference[oaicite:39]{index=39}
+  NoidaSector18: {
+    id: 200,
+    name: "Noida Sector 18",
+    line: metroLinesColor.Blue,
+    latitude: 28.570783,
+    longitude: 77.326131,
+    speeds: { min: 27, max: 50 },
+  }, //:contentReference[oaicite:40]{index=40}
+  BotanicalGarden: {
+    id: 201,
+    name: "Botanical Garden",
+    line: metroLinesColor.Blue,
+    latitude: 28.5642,
+    longitude: 77.3348,
+    speeds: { min: 30, max: 60 },
+  }, //:contentReference[oaicite:41]{index=41}
+  GolfCourse: {
+    id: 202,
+    name: "Noida Golf Course",
+    line: metroLinesColor.Blue,
+    latitude: 28.5669,
+    longitude: 77.3455,
+    speeds: { min: 25, max: 45 },
+  }, //:contentReference[oaicite:42]{index=42}
+  NoidaCityCtr: {
+    id: 203,
+    name: "Noida City Centre",
+    line: metroLinesColor.Blue,
+    latitude: 28.5747,
+    longitude: 77.3561,
+    speeds: { min: 30, max: 60 },
+  }, //:contentReference[oaicite:43]{index=43}
+
+  // Blue Line – Vaishali branch (Yamuna Bank to Vaishali)
+  LaxmiNagar: {
+    id: 204,
+    name: "Laxmi Nagar",
+    line: metroLinesColor.Blue,
+    latitude: 28.6292,
+    longitude: 77.2753,
+    speeds: { min: 29, max: 55 },
+  }, //:contentReference[oaicite:44]{index=44}
+  NirmanVihar: {
+    id: 205,
+    name: "Nirman Vihar",
+    line: metroLinesColor.Blue,
+    latitude: 28.6377,
+    longitude: 77.2889,
+    speeds: { min: 28, max: 52 },
+  }, //:contentReference[oaicite:45]{index=45}
+  PreetVihar: {
+    id: 206,
+    name: "Preet Vihar",
+    line: metroLinesColor.Blue,
+    latitude: 28.6415,
+    longitude: 77.2951,
+    speeds: { min: 27, max: 50 },
+  }, //:contentReference[oaicite:46]{index=46}
+  Karkarduma: {
+    id: 207,
+    name: "Karkarduma",
+    line: metroLinesColor.Blue,
+    latitude: 28.6486,
+    longitude: 77.3047,
+    speeds: { min: 25, max: 45 },
+  }, //:contentReference[oaicite:47]{index=47}
+  AnandVihar: {
+    id: 208,
+    name: "Anand Vihar",
+    line: metroLinesColor.Blue,
+    latitude: 28.6473,
+    longitude: 77.3161,
+    speeds: { min: 26, max: 48 },
+  }, //:contentReference[oaicite:48]{index=48}
+  Kaushambi: {
+    id: 209,
     name: "Kaushambi",
     line: metroLinesColor.Blue,
-    latitude: 28.645523,
-    longitude: 77.324297,
-    speeds: { min: 40, max: 75 },
-  },
-  vaishali_Blue: {
-    id: 198,
+    latitude: 28.645448,
+    longitude: 77.324379,
+    speeds: { min: 25, max: 40 },
+  }, //:contentReference[oaicite:49]{index=49}
+  Vaishali: {
+    id: 210,
     name: "Vaishali",
     line: metroLinesColor.Blue,
-    latitude: 28.649947,
-    longitude: 77.339711,
-    speeds: { min: 38, max: 72 },
-  },
-
+    latitude: 28.649844,
+    longitude: 77.339638,
+    speeds: { min: 27, max: 50 },
+  }, //:contentReference[oaicite:50]{index=50}
   majlisPark_Pink: {
     id: 230,
     name: "Majlis Park",
