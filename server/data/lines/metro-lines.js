@@ -22,7 +22,6 @@ export async function readJsonArrayFile(filename) {
   }
 }
 
-
 export const metroLines = [
   {
     name: "Delhi Metro Red Line",
@@ -144,5 +143,49 @@ export const metroLines = [
     ],
     start: metroStationData.janakpuriWest_Magenta,
     end: metroStationData.botanicalGarden_Magenta,
+  },
+  {
+    name: "Delhi Metro Violet Line",
+    id: 4,
+    fs: "violet-line.json",
+    color: metroLinesColor.Violet,
+    stations: [
+      metroStationData.kashmereGate_Violet,
+      metroStationData.lalQuila_Violet,
+      metroStationData.jamaMasjid_Violet,
+      metroStationData.delhiGate_Violet,
+      metroStationData.ito_Violet,
+      metroStationData.mandiHouse_Violet,
+      metroStationData.janpath_Violet,
+      metroStationData.centralSecretariat_Violet,
+      metroStationData.khanMarket_Violet,
+      metroStationData.jlNStadium_Violet,
+      metroStationData.jangiHouse_Violet,
+      metroStationData.lajpatNagar_Violet,
+      metroStationData.moolchand_Violet,
+      metroStationData.kailashColony_Violet,
+      metroStationData.nehruPlace_Violet,
+      metroStationData.kalkajiMandir_Violet,
+      metroStationData.govindpuri_Violet,
+      metroStationData.harkeshNagarOkhla_Violet,
+      metroStationData.jasolaApollo_Violet,
+      metroStationData.saritaVihar_Violet,
+      metroStationData.mohanEstate_Violet,
+      metroStationData.tughlakabad_Violet,
+      metroStationData.badarpurBorder_Violet,
+      metroStationData.sarai_Violet,
+      metroStationData.nhpcChowk_Violet,
+      metroStationData.meenakshiPublicSchool_Violet,
+      metroStationData.sector28_Violet,
+      metroStationData.badkhalMor_Violet,
+      metroStationData.oldFaridabad_Violet,
+      metroStationData.neelamChowkAjronda_Violet,
+      metroStationData.bataChowk_Violet,
+      metroStationData.escortsMujesar_Violet,
+      metroStationData.santSurdasSihi_Violet,
+      metroStationData.rasaulpur_Violet,
+    ],
+    start: metroStationData.kashmereGate_Violet,
+    end: metroStationData.rasaulpur_Violet,
   },
 ];
