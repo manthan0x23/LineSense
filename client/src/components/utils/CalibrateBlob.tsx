@@ -73,7 +73,7 @@ export const CalibrateBlob = ({ line }: { line: Point[] }) => {
     // Watch GPS
     watchIdRef.current = navigator.geolocation.watchPosition(
       (pos) => {
-        const { latitude, longitude, speed: gpsSpeed } = pos.coords;
+        const { latitude, longitude } = pos.coords;
         const currentTime = pos.timestamp;
         const currentCoords = { lat: latitude, lng: longitude };
 

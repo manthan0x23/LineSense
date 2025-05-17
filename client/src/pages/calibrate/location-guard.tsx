@@ -12,10 +12,7 @@ import { Loader2 } from "lucide-react";
 import type { Point } from "@/lib/types";
 import { application } from "@/lib/utils";
 
-interface LatLngLiteral {
-  lat: number;
-  lng: number;
-}
+
 
 // Compute distance between two lat/lng points using Google's geometry library
 const getDistanceMeters = (

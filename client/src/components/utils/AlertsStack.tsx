@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useCoordinateStore } from "@/store/useCoordinate";
-import { useRouteStore } from "@/store/useRouteStore";
 import { useSimulationStore } from "@/store/useSimulationStore";
 import { FiAlertTriangle } from "react-icons/fi";
 import { CgDanger } from "react-icons/cg";
@@ -20,8 +19,7 @@ export const AlertsStack = () => {
   const { lat, lng } = useCoordinateStore();
   const { speed, multiplier, currentPolylineIdx, polyline } =
     useSimulationStore();
-  const { route } = useRouteStore();
-
+ 
   const [alerts, setAlerts] = useState<Alert[]>([]);
 
   const lastFired = useRef<Record<Alert["type"], number>>({

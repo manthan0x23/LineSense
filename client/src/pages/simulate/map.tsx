@@ -4,7 +4,7 @@ import {
   APIProvider,
   Map as GoogleMap,
 } from "@vis.gl/react-google-maps";
-import type { MetroLine, MetroStation, Point } from "@/lib/types";
+import type {  MetroStation, Point } from "@/lib/types";
 import { useRouteStore } from "@/store/useRouteStore";
 import { PolylineBetweenStations } from "@/components/utils/Polyline";
 import { useSimulationStore } from "@/store/useSimulationStore";

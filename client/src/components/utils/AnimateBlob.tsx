@@ -88,8 +88,7 @@ export const SimulateBlob = ({
 
     const path = pathRef.current;
     const segmentDistances = segmentDistancesRef.current;
-    const totalDistance = totalDistanceRef.current;
-
+ 
     if (status === "idle") {
       distanceTraveledRef.current = 0;
       lastTimeRef.current = null;

@@ -5,9 +5,8 @@ import {
   Map as GoogleMap,
   Pin,
 } from "@vis.gl/react-google-maps";
-import type { MetroLine, MetroStation, Point } from "@/lib/types";
+import type {  MetroStation, Point } from "@/lib/types";
 import { useRouteStore } from "@/store/useRouteStore";
-import { SimulateBlob } from "@/components/utils/AnimateBlob";
 import { PolylineBetweenStations } from "@/components/utils/Polyline";
 import CalibrateBlob from "@/components/utils/CalibrateBlob";
 import { LocationGuard } from "./location-guard";

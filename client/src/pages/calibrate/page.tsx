@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { useRouteCookies } from "@/lib/hooks/useRouteCookies";
 import DisplayInfo from "../../components/utils/DisplayInfo";
 import CalibrateMap from "./map";

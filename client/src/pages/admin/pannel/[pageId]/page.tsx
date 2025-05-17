@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -67,7 +65,7 @@ const getPolylineCenter = (points: Point[]): google.maps.LatLngLiteral => {
 
 const RouteLineAdmin = () => {
   const Line = useGetLineData();
-  const [alertPoints, setAlertPoints] = useState<AlertPoint[]>([]);
+  const [_alertPoints, setAlertPoints] = useState<AlertPoint[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [formData, setFormData] = useState<AlertPoint>({
     latitude: 0,
