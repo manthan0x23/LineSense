@@ -79,19 +79,17 @@ const RouteLineAdmin = () => {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<AlertPoint | null>(null);
 
-  const reloadWindow = () => {
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  };
-
-  console.log(formData);
+  const [polyline, setPolyline] = useState<Point[]>([]);
 
   useEffect(() => {
     if (!deleteDialogOpen) {
       setIsEditing(false);
     }
   }, [deleteDialogOpen]);
+
+  useEffect(() => {
+    if (Line?.polyline) setPolyline(Line.polyline);
+  }, [Line?.polyline]);
 
   useEffect(() => {
     if (Line?.polyline) {
@@ -121,7 +119,7 @@ const RouteLineAdmin = () => {
     w: google.maps.LatLng
   ): number {
     const latLngToPoint = (latlng: google.maps.LatLng) => {
-      const R = 6371000; // Earth radius in meters
+      const R = 6371000;
       const lat = (latlng.lat() * Math.PI) / 180;
       const lng = (latlng.lng() * Math.PI) / 180;
       return {
@@ -140,7 +138,6 @@ const RouteLineAdmin = () => {
       (wPoint.y - vPoint.y) ** 2 +
       (wPoint.z - vPoint.z) ** 2;
     if (l2 === 0) {
-      // v == w case
       return distanceBetweenPoints(pPoint, vPoint);
     }
 
@@ -201,7 +198,6 @@ const RouteLineAdmin = () => {
     const lat = latLng.lat;
     const lng = latLng.lng;
 
-    // Check if clicked point is near the polyline
     const nearPolyline = isPointNearPolyline({ lat, lng }, Line.polyline!, 10); // 10 meters threshold
 
     if (!nearPolyline) {
@@ -224,18 +220,20 @@ const RouteLineAdmin = () => {
   };
 
   const handleAddAlert = async () => {
-    const success = await addPoint({
-      ...formData,
-      lineId: Line.id!,
-      type: formData.type,
-    });
+    try {
+      const success = await addPoint({
+        ...formData,
+        lineId: Line.id!,
+        type: formData.type,
+      });
 
-    if (success) {
-      setAlertPoints((prev) => [...prev, formData]);
-      setDialogOpen(false);
-      toast.success("Point alert successfully created", { richColors: true });
-      reloadWindow();
-    } else {
+      if (success) {
+        setPolyline(success);
+        setAlertPoints((prev) => [...prev, formData]);
+        setDialogOpen(false);
+        toast.success("Point alert successfully created", { richColors: true });
+      }
+    } catch (error) {
       toast.error("Failed to add alert point.", { richColors: true });
     }
   };
@@ -243,41 +241,42 @@ const RouteLineAdmin = () => {
   const handleUpdateAlertPoint = async () => {
     if (!selectedPoint || !Line) return;
 
-    const success = await updatePoint({
-      latitude: selectedPoint.latitude,
-      longitude: selectedPoint.longitude,
-      lineId: Line.id!,
-      message: selectedPoint.message,
-      type: selectedPoint.type,
-      speed: {
-        min: selectedPoint.speed.min,
-        max: selectedPoint.speed.max,
-      },
-    });
+    try {
+      const success = await updatePoint({
+        latitude: selectedPoint.latitude,
+        longitude: selectedPoint.longitude,
+        lineId: Line.id!,
+        message: selectedPoint.message,
+        type: selectedPoint.type,
+        speed: {
+          min: selectedPoint.speed.min,
+          max: selectedPoint.speed.max,
+        },
+      });
 
-    if (success) {
-      setAlertPoints((prev) =>
-        prev.map((point) => {
-          const isSame =
-            point.latitude === selectedPoint.latitude &&
-            point.longitude === selectedPoint.longitude;
+      if (success) {
+        setAlertPoints((prev) =>
+          prev.map((point) => {
+            const isSame =
+              point.latitude === selectedPoint.latitude &&
+              point.longitude === selectedPoint.longitude;
 
-          return isSame
-            ? {
-                ...point,
-                message: formData.message,
-                type: formData.type,
-                speed: { ...formData.speed },
-              }
-            : point;
-        })
-      );
-
-      toast.success("Alert point successfully updated", { richColors: true });
-      setDeleteDialogOpen(false);
-      setSelectedPoint(null);
-      reloadWindow();
-    } else {
+            return isSame
+              ? {
+                  ...point,
+                  message: formData.message,
+                  type: formData.type,
+                  speed: { ...formData.speed },
+                }
+              : point;
+          })
+        );
+        setPolyline(success);
+        toast.success("Alert point successfully updated", { richColors: true });
+        setDeleteDialogOpen(false);
+        setSelectedPoint(null);
+      }
+    } catch (error) {
       toast.error("Failed to update alert point.", { richColors: true });
     }
   };
@@ -285,13 +284,12 @@ const RouteLineAdmin = () => {
   const handleDeleteSelectedPoint = async () => {
     if (!selectedPoint || !Line) return;
 
-    const success = await deletePoint({
-      latitude: selectedPoint.latitude,
-      longitude: selectedPoint.longitude,
-      lineId: Line.id!,
-    });
-
-    if (success) {
+    try {
+      const success = await deletePoint({
+        latitude: selectedPoint.latitude,
+        longitude: selectedPoint.longitude,
+        lineId: Line.id!,
+      });
       setAlertPoints((prev) =>
         prev.filter(
           (p) =>
@@ -301,11 +299,11 @@ const RouteLineAdmin = () => {
             )
         )
       );
+      setPolyline(success);
       setDeleteDialogOpen(false);
       setSelectedPoint(null);
       toast.success("Point alert successfully deleted", { richColors: true });
-      reloadWindow();
-    } else {
+    } catch (error) {
       toast.error("Failed to delete alert point.", { richColors: true });
     }
   };
@@ -330,13 +328,13 @@ const RouteLineAdmin = () => {
             <AdvancedMarker position={start} />
             <AdvancedMarker position={end} />
 
-            {Line.polyline && (
+            {polyline && (
               <>
                 <InteractiveAlertPolyline
-                  polyline_={Line.polyline}
+                  polyline_={polyline}
                   color={Line.color}
                 />
-                {Line.polyline.map((point) => {
+                {polyline.map((point) => {
                   {
                     return (
                       <AdvancedMarker

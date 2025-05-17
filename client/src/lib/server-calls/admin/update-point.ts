@@ -1,4 +1,4 @@
-import type { Alert } from "@/lib/types";
+import type { Alert, Point } from "@/lib/types";
 import { application } from "@/lib/utils";
 import axios from "axios";
 
@@ -16,9 +16,7 @@ interface UpdatePointPayload {
 
 export const updatePoint = async (
   pointData: UpdatePointPayload
-): Promise<boolean> => {
-  console.log("in func", pointData);
-
+): Promise<Point[]> => {
   try {
     const response = await axios.put(
       application.server + "/update/update-point",
@@ -28,9 +26,9 @@ export const updatePoint = async (
       }
     );
 
-    return response.status === 200;
+    return response.data.polyline as Point[];
   } catch (error) {
     console.error("Update point failed:", error);
-    return false;
+    throw new Error("Update point failed");
   }
 };

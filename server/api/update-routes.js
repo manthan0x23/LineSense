@@ -96,6 +96,7 @@ updateRouter.put("/add-point", async (req, res) => {
     res.status(200).json({
       message: "Point inserted and JSON file updated",
       insertedPoint: newPoint,
+      polyline: updatedPolyline,
     });
   } catch (error) {
     console.error("Error in /add-point:", error);
@@ -140,6 +141,7 @@ updateRouter.delete("/delete-point", async (req, res) => {
     res.status(200).json({
       message: "Point deleted successfully",
       deletedAt: { latitude, longitude },
+      polyline: filteredPolyline,
     });
   } catch (error) {
     console.error("Error in /delete-point:", error);
@@ -203,6 +205,7 @@ updateRouter.put("/update-point", async (req, res) => {
     res.status(200).json({
       message: "Point updated successfully",
       updatedAt: { latitude, longitude },
+      polyline: updatedPolyline,
     });
   } catch (error) {
     console.error("Error in /update-point:", error);

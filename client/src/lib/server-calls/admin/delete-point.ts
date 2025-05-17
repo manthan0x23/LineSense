@@ -1,3 +1,4 @@
+import type { Point } from "@/lib/types";
 import { application } from "@/lib/utils";
 import axios from "axios";
 
@@ -9,7 +10,7 @@ interface DeletePointPayload {
 
 export const deletePoint = async (
   pointData: DeletePointPayload
-): Promise<boolean> => {
+): Promise<Point[]> => {
   try {
     const response = await axios.delete(
       application.server + "/update/delete-point",
@@ -19,9 +20,9 @@ export const deletePoint = async (
       }
     );
 
-    return response.status === 200;
+    return response.data.polyline as Point[];
   } catch (error) {
     console.error("Delete point failed:", error);
-    return false;
+    throw new Error("Delete point failed");
   }
 };
