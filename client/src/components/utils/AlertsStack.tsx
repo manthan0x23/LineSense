@@ -19,7 +19,7 @@ export const AlertsStack = () => {
   const { lat, lng } = useCoordinateStore();
   const { speed, multiplier, currentPolylineIdx, polyline } =
     useSimulationStore();
- 
+
   const [alerts, setAlerts] = useState<Alert[]>([]);
 
   const lastFired = useRef<Record<Alert["type"], number>>({
@@ -31,12 +31,18 @@ export const AlertsStack = () => {
 
   const firedCustomAlertIdxs = useRef<Set<number>>(new Set());
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRefs = useRef<Record<Alert["type"], HTMLAudioElement | null>>({
+    info: null,
+    warning: null,
+    danger: null,
+    none: null,
+  });
 
   useEffect(() => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio("/sounds/notification.wav");
-    }
+    audioRefs.current.info = new Audio("/sounds/info.wav");
+    audioRefs.current.warning = new Audio("/sounds/warning.wav");
+    audioRefs.current.danger = new Audio("/sounds/danger.wav");
+    audioRefs.current.none = new Audio("/sounds/notification.wav");
   }, []);
 
   useEffect(() => {
@@ -160,9 +166,12 @@ export const AlertsStack = () => {
     if (newAlerts.length) {
       setAlerts((prev) => [...newAlerts, ...prev]);
 
-      if (audioRef.current) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().catch(() => {});
+      const firstAlert = newAlerts[0];
+      const audioToPlay = audioRefs.current[firstAlert.type];
+
+      if (audioToPlay) {
+        audioToPlay.currentTime = 0;
+        audioToPlay.play().catch(() => {});
       }
     }
   }, [lat, lng, currentPolylineIdx, speed, multiplier, polyline]);
