@@ -50,7 +50,7 @@ export const metroLinesColor = {
 };
 
 export interface Alert {
-  type: "info" | "warning" | "danger";
+  type: "info" | "warning" | "danger" | "none";
   message: string;
   at?: Date;
   speed?: boolean;

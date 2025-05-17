@@ -1,12 +1,16 @@
-import useVerifyAdmin from "@/lib/hooks/admin/useVerifyAdmin"
+import useVerifyAdmin from "@/lib/hooks/admin/useVerifyAdmin";
 import { Outlet } from "react-router";
+import { Toaster } from "sonner";
 
 const Page = () => {
-    useVerifyAdmin();
+  useVerifyAdmin();
 
-    return (
-        <Outlet />
-    )
-}
+  return (
+    <>
+      <Outlet />
+      <Toaster />
+    </>
+  );
+};
 
-export default Page
+export default Page;

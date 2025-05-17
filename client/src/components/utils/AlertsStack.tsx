@@ -12,12 +12,14 @@ import {
 import type { Alert } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { CiCircleAlert } from "react-icons/ci";
+import { MdAddCircleOutline } from "react-icons/md";
 
 const DEBOUNCE_MS = 6000;
 
 export const AlertsStack = () => {
   const { lat, lng } = useCoordinateStore();
-  const { speed, multiplier, currentPolylineIdx, polyline } = useSimulationStore();
+  const { speed, multiplier, currentPolylineIdx, polyline } =
+    useSimulationStore();
   const { route } = useRouteStore();
 
   const [alerts, setAlerts] = useState<Alert[]>([]);
@@ -26,9 +28,18 @@ export const AlertsStack = () => {
     info: 0,
     warning: 0,
     danger: 0,
+    none: 0,
   });
 
   const firedCustomAlertIdxs = useRef<Set<number>>(new Set());
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio("/sounds/notification.wav");
+    }
+  }, []);
 
   useEffect(() => {
     if (
@@ -85,10 +96,15 @@ export const AlertsStack = () => {
             new google.maps.LatLng(turnPoint.latitude, turnPoint.longitude)
           );
 
-          if (dist < distanceThreshold && now - lastFired.current.info > DEBOUNCE_MS) {
+          if (
+            dist < distanceThreshold &&
+            now - lastFired.current.info > DEBOUNCE_MS
+          ) {
             newAlerts.push({
               type: "info",
-              message: `Curve ahead: ${Math.abs(delta).toFixed(0)}° turn in ~${Math.floor(dist)} m.`,
+              message: `Curve ahead: ${Math.abs(delta).toFixed(
+                0
+              )}° turn in ~${Math.floor(dist)} m.`,
             });
             lastFired.current.info = now;
           }
@@ -123,7 +139,9 @@ export const AlertsStack = () => {
     ) {
       newAlerts.push({
         type: "danger",
-        message: `Danger! Exceeding safe speed by ${Math.floor(effectiveSpeed - maxSpeed)} km/h.`,
+        message: `Danger! Exceeding safe speed by ${Math.floor(
+          effectiveSpeed - maxSpeed
+        )} km/h.`,
         speed: true,
       });
       lastFired.current.danger = now;
@@ -133,7 +151,9 @@ export const AlertsStack = () => {
     ) {
       newAlerts.push({
         type: "warning",
-        message: `Reduce speed: currently ${Math.floor(effectiveSpeed)} km/h, max allowed ${maxSpeed} km/h.`,
+        message: `Reduce speed: currently ${Math.floor(
+          effectiveSpeed
+        )} km/h, max allowed ${maxSpeed} km/h.`,
         speed: true,
       });
       lastFired.current.warning = now;
@@ -141,6 +161,11 @@ export const AlertsStack = () => {
 
     if (newAlerts.length) {
       setAlerts((prev) => [...newAlerts, ...prev]);
+
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(() => {});
+      }
     }
   }, [lat, lng, currentPolylineIdx, speed, multiplier, polyline]);
 
@@ -175,6 +200,11 @@ const AlertCard = ({
       bg: "bg-red-400/30",
       border: "border-red-400",
       Icon: CgDanger,
+    },
+    none: {
+      bg: "bg-gray-400/30",
+      border: "border-gray-400",
+      Icon: MdAddCircleOutline,
     },
   };
 
