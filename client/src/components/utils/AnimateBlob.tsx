@@ -131,9 +131,7 @@ export const SimulateBlob = ({
       if (segmentIndex >= path.length - 1) {
         markerRef.current!.setPosition(path[path.length - 1]);
         setCurrentPolylineIdx(path.length - 1);
-
-        
-        
+        window.location.reload();
         return;
       }
 
