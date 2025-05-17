@@ -1,0 +1,547 @@
+[
+  {
+    "latitude": 28.6289502,
+    "longitude": 77.0779235,
+    "speed": {
+      "min": 28,
+      "max": 77
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 74
+  },
+  {
+    "latitude": 28.628695348350817,
+    "longitude": 77.07805023437437,
+    "speed": {
+      "min": 14,
+      "max": 56
+    },
+    "isTurn": 0,
+    "isStation": false,
+    "isAlert": true,
+    "alert": {
+      "message": "Hey tehre",
+      "type": "info"
+    }
+  },
+  {
+    "latitude": 28.62235285,
+    "longitude": 77.08155074999999,
+    "speed": {
+      "min": 27,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.6157555,
+    "longitude": 77.085178,
+    "speed": {
+      "min": 25,
+      "max": 80
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 75
+  },
+  {
+    "latitude": 28.6088153,
+    "longitude": 77.08376705,
+    "speed": {
+      "min": 28,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.6018751,
+    "longitude": 77.0823561,
+    "speed": {
+      "min": 30,
+      "max": 75
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 76
+  },
+  {
+    "latitude": 28.596884199999998,
+    "longitude": 77.08259015,
+    "speed": {
+      "min": 29,
+      "max": 74
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5918933,
+    "longitude": 77.0828242,
+    "speed": {
+      "min": 27,
+      "max": 72
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 77
+  },
+  {
+    "latitude": 28.5845221,
+    "longitude": 77.09698875000001,
+    "speed": {
+      "min": 28,
+      "max": 73
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5771509,
+    "longitude": 77.1111533,
+    "speed": {
+      "min": 29,
+      "max": 74
+    },
+    "isTurn": 1,
+    "isStation": true,
+    "stationId": 78
+  },
+  {
+    "latitude": 28.57097545,
+    "longitude": 77.11692665,
+    "speed": {
+      "min": 28,
+      "max": 76
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5648,
+    "longitude": 77.1227,
+    "speed": {
+      "min": 26,
+      "max": 78
+    },
+    "isTurn": 1,
+    "isStation": true,
+    "stationId": 79
+  },
+  {
+    "latitude": 28.561119325,
+    "longitude": 77.13118274499777,
+    "speed": {
+      "min": 25,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.55743865,
+    "longitude": 77.13966548999556,
+    "speed": {
+      "min": 24,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 80
+  },
+  {
+    "latitude": 28.5590646,
+    "longitude": 77.15022811084062,
+    "speed": {
+      "min": 24,
+      "max": 78
+    },
+    "isTurn": 1,
+    "isStation": false
+  },
+  {
+    "latitude": 28.56069055,
+    "longitude": 77.16079073168567,
+    "speed": {
+      "min": 23,
+      "max": 76
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 81
+  },
+  {
+    "latitude": 28.557788275,
+    "longitude": 77.16593741584283,
+    "speed": {
+      "min": 26,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.554886,
+    "longitude": 77.1710841,
+    "speed": {
+      "min": 28,
+      "max": 80
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 82
+  },
+  {
+    "latitude": 28.550693000000003,
+    "longitude": 77.17939205,
+    "speed": {
+      "min": 28,
+      "max": 77
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5465,
+    "longitude": 77.1877,
+    "speed": {
+      "min": 27,
+      "max": 74
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 83
+  },
+  {
+    "latitude": 28.54575,
+    "longitude": 77.19015,
+    "speed": {
+      "min": 26,
+      "max": 75
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.545,
+    "longitude": 77.1926,
+    "speed": {
+      "min": 25,
+      "max": 75
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 84
+  },
+  {
+    "latitude": 28.5446282,
+    "longitude": 77.1996536,
+    "speed": {
+      "min": 26,
+      "max": 77
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5442564,
+    "longitude": 77.2067072,
+    "speed": {
+      "min": 26,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 85
+  },
+  {
+    "latitude": 28.54380445,
+    "longitude": 77.21039145,
+    "speed": {
+      "min": 28,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5433525,
+    "longitude": 77.2140757,
+    "speed": {
+      "min": 29,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 86
+  },
+  {
+    "latitude": 28.5407468,
+    "longitude": 77.22107255,
+    "speed": {
+      "min": 29,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5381411,
+    "longitude": 77.2280694,
+    "speed": {
+      "min": 28,
+      "max": 77
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 87
+  },
+  {
+    "latitude": 28.540009400000002,
+    "longitude": 77.23326234999999,
+    "speed": {
+      "min": 27,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.540412217170825,
+    "longitude": 77.23488836461941,
+    "speed": {
+      "min": 45,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": false,
+    "isAlert": true,
+    "alert": {
+      "message": "Slow down ahead !!",
+      "type": "info"
+    }
+  },
+  {
+    "latitude": 28.5418777,
+    "longitude": 77.2384553,
+    "speed": {
+      "min": 25,
+      "max": 80
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 88
+  },
+  {
+    "latitude": 28.54396805,
+    "longitude": 77.2449805,
+    "speed": {
+      "min": 26,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5460584,
+    "longitude": 77.2515057,
+    "speed": {
+      "min": 26,
+      "max": 76
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 89
+  },
+  {
+    "latitude": 28.5479168,
+    "longitude": 77.2560864,
+    "speed": {
+      "min": 25,
+      "max": 77
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5497752,
+    "longitude": 77.2606671,
+    "speed": {
+      "min": 24,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 90
+  },
+  {
+    "latitude": 28.552129,
+    "longitude": 77.2627579,
+    "speed": {
+      "min": 26,
+      "max": 76
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5544828,
+    "longitude": 77.2648487,
+    "speed": {
+      "min": 27,
+      "max": 74
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 91
+  },
+  {
+    "latitude": 28.55711525,
+    "longitude": 77.26987455,
+    "speed": {
+      "min": 26,
+      "max": 76
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5597477,
+    "longitude": 77.2749004,
+    "speed": {
+      "min": 25,
+      "max": 77
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 92
+  },
+  {
+    "latitude": 28.559118975,
+    "longitude": 77.2780325677588,
+    "speed": {
+      "min": 27,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.55849025,
+    "longitude": 77.28116473551759,
+    "speed": {
+      "min": 28,
+      "max": 80
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 93
+  },
+  {
+    "latitude": 28.559895225,
+    "longitude": 77.28654756775879,
+    "speed": {
+      "min": 26,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5613002,
+    "longitude": 77.2919304,
+    "speed": {
+      "min": 23,
+      "max": 75
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 94
+  },
+  {
+    "latitude": 28.55356405,
+    "longitude": 77.2942941,
+    "speed": {
+      "min": 25,
+      "max": 77
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5458279,
+    "longitude": 77.2966578,
+    "speed": {
+      "min": 26,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 95
+  },
+  {
+    "latitude": 28.5455233,
+    "longitude": 77.30132345,
+    "speed": {
+      "min": 25,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5452187,
+    "longitude": 77.3059891,
+    "speed": {
+      "min": 24,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 96
+  },
+  {
+    "latitude": 28.54908025,
+    "longitude": 77.31379205,
+    "speed": {
+      "min": 26,
+      "max": 78
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5529418,
+    "longitude": 77.321595,
+    "speed": {
+      "min": 28,
+      "max": 77
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 97
+  },
+  {
+    "latitude": 28.5584191,
+    "longitude": 77.3279635,
+    "speed": {
+      "min": 27,
+      "max": 79
+    },
+    "isTurn": 0,
+    "isStation": false
+  },
+  {
+    "latitude": 28.5638964,
+    "longitude": 77.334332,
+    "speed": {
+      "min": 25,
+      "max": 80
+    },
+    "isTurn": 0,
+    "isStation": true,
+    "stationId": 98
+  }
+]

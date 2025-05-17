@@ -8,5 +8,15 @@
     "id": 2,
     "username": "testuser@1",
     "password": "$2b$10$8/bvuyl3dZnbdh5T7UsDqeGfli4paiocTZn682JDFehGjJdwcNvaq"
+  },
+  {
+    "id": 3,
+    "username": "testuser@3",
+    "password": "$2b$10$ihuKR4kM6HpkpNWW5.fDNOSukEGjjzm9iw0kx9tEWKPOQzS5d.Lym"
+  },
+  {
+    "id": 4,
+    "username": "testuser@34",
+    "password": "$2b$10$89BC7E9N/fMejWMaCJp8NuB1wDWZccSt9VAAhRUI7a6Opvekqhe3K"
   }
 ]

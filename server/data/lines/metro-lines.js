@@ -1,15 +1,34 @@
 import { metroStationData } from "../metro-stations.js";
-import { magentaLinePolyline } from "./magenta-line.js";
-import { yellowLinePolyline } from "./yellow-line.js";
-import { redLinePolyline } from "./red-line.js";
 import { metroLinesColor } from "../metro-util.js";
+import fs from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export async function readJsonArrayFile(filename) {
+  const filePath = path.join(__dirname, filename);
+
+  try {
+    const content = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(content);
+    if (!Array.isArray(data)) {
+      throw new Error("JSON data is not an array");
+    }
+    return data;
+  } catch (err) {
+    return `Error reading or parsing file: ${err.message}`;
+  }
+}
+
 
 export const metroLines = [
   {
     name: "Delhi Metro Red Line",
     id: 1,
+    fs: "red-line.json",
     color: metroLinesColor.Red,
-    polyline: redLinePolyline,
     stations: [
       metroStationData.Rithala_Red,
       metroStationData.RohiniWest_Red,
@@ -47,6 +66,7 @@ export const metroLines = [
   {
     name: "Delhi Metro Yellow Line",
     id: 2,
+    fs: "yellow-line.json",
     color: metroLinesColor.Yellow,
     stations: [
       metroStationData.SamaypurBadli_Yellow,
@@ -89,11 +109,11 @@ export const metroLines = [
     ],
     start: metroStationData.SamaypurBadli_Yellow,
     end: metroStationData.HUDACityCentre_Yellow,
-    polyline: yellowLinePolyline,
   },
   {
     name: "Delhi Metro Magenta Line",
     id: 3,
+    fs: "magenta-line.json",
     color: metroLinesColor.Magenta,
     stations: [
       metroStationData.janakpuriWest_Magenta,
@@ -124,6 +144,5 @@ export const metroLines = [
     ],
     start: metroStationData.janakpuriWest_Magenta,
     end: metroStationData.botanicalGarden_Magenta,
-    polyline: magentaLinePolyline,
   },
 ];

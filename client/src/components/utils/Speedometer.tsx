@@ -11,6 +11,13 @@ export const SpeedometerCard = ({ routeType }: { routeType: RouteType }) => {
   const { speed, multiplier, setMultiplier, currentPolylineIdx, polyline } =
     useSimulationStore();
 
+  const { status, setStatus } = useSimulationStore((state) => state);
+
+  const handleStart = () => setStatus("running");
+  const handleReset = () => {
+    window.location.reload();
+  };
+
   const speedLimits = useMemo(() => {
     if (currentPolylineIdx < 0) return null;
     return polyline[currentPolylineIdx] || null;
@@ -61,6 +68,25 @@ export const SpeedometerCard = ({ routeType }: { routeType: RouteType }) => {
                 {multi / 10}x
               </Button>
             ))}
+          </div>
+        )}
+        {routeType == "simulate" && (
+          <div className="flex flex-wrap gap-2 justify-center">
+            {status === "idle" && (
+              <Button onClick={handleStart} className="cursor-pointer">
+                Start
+              </Button>
+            )}
+
+            {status == "running" && (
+              <Button
+                onClick={handleReset}
+                variant="destructive"
+                className="cursor-pointer"
+              >
+                Reset
+              </Button>
+            )}
           </div>
         )}
       </CardContent>

@@ -5,9 +5,14 @@ export interface Point {
     min: number;
     max: number;
   };
-  isTurn: number;
   isStation: boolean;
   stationId?: number;
+  isFixed: boolean;
+  isAlert: boolean;
+  alert?: {
+    message: string;
+    type: Alert["type"];
+  };
 }
 
 export interface MetroStation {
@@ -48,4 +53,5 @@ export interface Alert {
   type: "info" | "warning" | "danger";
   message: string;
   at?: Date;
+  speed?: boolean;
 }

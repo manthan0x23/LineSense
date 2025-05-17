@@ -14,33 +14,17 @@ const ControlPanel = () => {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Journey Controls</CardTitle>
-      </CardHeader>
-
-      <CardContent className="flex flex-wrap gap-2 justify-center">
+      <div className="flex flex-wrap gap-2 justify-center">
         {status === "idle" && (
           <Button onClick={handleStart} className="w-24">
             Start
           </Button>
         )}
 
-        {status === "running" && (
-          <Button onClick={handlePause} variant="secondary" className="w-24">
-            Pause
-          </Button>
-        )}
-
-        {status === "paused" && (
-          <Button onClick={handleResume} className="w-24">
-            Resume
-          </Button>
-        )}
-
-        <Button onClick={handleReset} variant="destructive" className="w-24">
+        {status == "running" && <Button onClick={handleReset} variant="destructive" className="w-24">
           Reset
-        </Button>
-      </CardContent>
+        </Button>}
+      </div>
     </Card>
   );
 };

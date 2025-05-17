@@ -13,20 +13,22 @@ import type { Alert } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { CiCircleAlert } from "react-icons/ci";
 
-const DEBOUNCE_MS = 6000; // 6 seconds
+const DEBOUNCE_MS = 6000;
 
 export const AlertsStack = () => {
   const { lat, lng } = useCoordinateStore();
-  const { speed, multiplier, currentPolylineIdx, polyline } =
-    useSimulationStore();
+  const { speed, multiplier, currentPolylineIdx, polyline } = useSimulationStore();
   const { route } = useRouteStore();
 
   const [alerts, setAlerts] = useState<Alert[]>([]);
+
   const lastFired = useRef<Record<Alert["type"], number>>({
     info: 0,
     warning: 0,
     danger: 0,
   });
+
+  const firedCustomAlertIdxs = useRef<Set<number>>(new Set());
 
   useEffect(() => {
     if (
@@ -45,22 +47,30 @@ export const AlertsStack = () => {
     const maxIdx = polyline.length - 1;
     const currentPoint = polyline[currentPolylineIdx];
 
+    if (
+      currentPoint.isAlert &&
+      currentPoint.alert &&
+      !firedCustomAlertIdxs.current.has(currentPolylineIdx)
+    ) {
+      newAlerts.push(currentPoint.alert);
+      firedCustomAlertIdxs.current.add(currentPolylineIdx);
+    }
+
     const lookahead = 5;
-    const angleThreshold = 30;
+    const angleThreshold = 20;
     const distanceThreshold = 500;
+
+    const calcHeading = (i: number) => {
+      const p1 = polyline[i];
+      const p2 = polyline[i + 1];
+      return google.maps.geometry.spherical.computeHeading(
+        new google.maps.LatLng(p1.latitude, p1.longitude),
+        new google.maps.LatLng(p2.latitude, p2.longitude)
+      );
+    };
 
     if (currentPolylineIdx + 1 <= maxIdx) {
       const maxLook = Math.min(lookahead, maxIdx - currentPolylineIdx - 1);
-
-      const calcHeading = (i: number) => {
-        const p1 = polyline[i];
-        const p2 = polyline[i + 1];
-        return google.maps.geometry.spherical.computeHeading(
-          new google.maps.LatLng(p1.latitude, p1.longitude),
-          new google.maps.LatLng(p2.latitude, p2.longitude)
-        );
-      };
-
       const h0 = calcHeading(currentPolylineIdx);
 
       for (let j = 1; j <= maxLook; j++) {
@@ -74,15 +84,11 @@ export const AlertsStack = () => {
             new google.maps.LatLng(lat, lng),
             new google.maps.LatLng(turnPoint.latitude, turnPoint.longitude)
           );
-          if (
-            dist < distanceThreshold &&
-            now - lastFired.current.info > DEBOUNCE_MS
-          ) {
+
+          if (dist < distanceThreshold && now - lastFired.current.info > DEBOUNCE_MS) {
             newAlerts.push({
               type: "info",
-              message: `Curve ahead: ${Math.abs(delta).toFixed(
-                0
-              )}° turn in ~${Math.floor(dist)} m.`,
+              message: `Curve ahead: ${Math.abs(delta).toFixed(0)}° turn in ~${Math.floor(dist)} m.`,
             });
             lastFired.current.info = now;
           }
@@ -117,9 +123,8 @@ export const AlertsStack = () => {
     ) {
       newAlerts.push({
         type: "danger",
-        message: `Danger! Exceeding safe speed by ${Math.floor(
-          effectiveSpeed - maxSpeed
-        )} km/h.`,
+        message: `Danger! Exceeding safe speed by ${Math.floor(effectiveSpeed - maxSpeed)} km/h.`,
+        speed: true,
       });
       lastFired.current.danger = now;
     } else if (
@@ -128,9 +133,8 @@ export const AlertsStack = () => {
     ) {
       newAlerts.push({
         type: "warning",
-        message: `Reduce speed: currently ${Math.floor(
-          effectiveSpeed
-        )} km/h, max allowed ${maxSpeed} km/h.`,
+        message: `Reduce speed: currently ${Math.floor(effectiveSpeed)} km/h, max allowed ${maxSpeed} km/h.`,
+        speed: true,
       });
       lastFired.current.warning = now;
     }
@@ -156,31 +160,31 @@ const AlertCard = ({
   type: Alert["type"];
   message: string;
 }) => {
-  if (type === "warning") {
-    return (
-      <AlertUI
-        className={cn("w-full bg-yellow-400/30 border-2 border-yellow-400")}
-      >
-        <FiAlertTriangle className="h-4 w-4 text-yellow-400" />
-        <AlertTitle>Warning</AlertTitle>
-        <AlertDescription>{message}</AlertDescription>
-      </AlertUI>
-    );
-  } else if (type === "info") {
-    return (
-      <AlertUI className={cn("w-full bg-blue-400/30 border-2 border-blue-400")}>
-        <CiCircleAlert className="h-4 w-4 text-blue-400" />
-        <AlertTitle>Info</AlertTitle>
-        <AlertDescription>{message}</AlertDescription>
-      </AlertUI>
-    );
-  } else {
-    return (
-      <AlertUI className={cn("w-full bg-red-400/30 border-2 border-red-400")}>
-        <CgDanger className="h-4 w-4 text-red-600" />
-        <AlertTitle>Danger</AlertTitle>
-        <AlertDescription>{message}</AlertDescription>
-      </AlertUI>
-    );
-  }
+  const styleMap = {
+    info: {
+      bg: "bg-blue-400/30",
+      border: "border-blue-400",
+      Icon: CiCircleAlert,
+    },
+    warning: {
+      bg: "bg-yellow-400/30",
+      border: "border-yellow-400",
+      Icon: FiAlertTriangle,
+    },
+    danger: {
+      bg: "bg-red-400/30",
+      border: "border-red-400",
+      Icon: CgDanger,
+    },
+  };
+
+  const { bg, border, Icon } = styleMap[type];
+
+  return (
+    <AlertUI className={cn("w-full border-2", bg, border)}>
+      <Icon className={`h-4 w-4 ${border.replace("border", "text")}`} />
+      <AlertTitle className="capitalize">{type}</AlertTitle>
+      <AlertDescription>{message}</AlertDescription>
+    </AlertUI>
+  );
 };
