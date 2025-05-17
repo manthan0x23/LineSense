@@ -2,7 +2,8 @@ import { useEffect, useRef } from "react";
 import { useMap } from "@vis.gl/react-google-maps";
 import { useCoordinateStore } from "@/store/useCoordinate";
 import { useSimulationStore } from "@/store/useSimulationStore";
-import type { Point } from "@/lib/data/type";
+import type { Point } from "@/lib/types";
+
 
 const getDistanceMeters = (
   a: google.maps.LatLngLiteral,

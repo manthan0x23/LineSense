@@ -3,17 +3,16 @@ import { Badge } from "@/components/ui/badge";
 import { useMemo } from "react";
 import { useSimulationStore } from "@/store/useSimulationStore";
 import { useRouteStore } from "@/store/useRouteStore";
-import type { MetroLine, MetroStation } from "@/lib/types";
-
+import type { MetroStation } from "@/lib/types";
 
 export const StationInfoCard = () => {
   const { route } = useRouteStore();
   const { currentPolylineIdx, polyline } = useSimulationStore();
 
-
-
   const startEnd = useMemo(() => {
-    const start = route.Line?.stations.find((st) => st.id == route.startStationId);
+    const start = route.Line?.stations.find(
+      (st) => st.id == route.startStationId
+    );
     const end = route.Line?.stations.find((st) => st.id == route.endStationId);
 
     return { start, end };
@@ -21,8 +20,9 @@ export const StationInfoCard = () => {
 
   const intermediateStations: MetroStation[] = useMemo(() => {
     return (
-      route.Line?.stations.filter((s) => route.intermediateStations.includes(s.id)) ||
-      []
+      route.Line?.stations.filter((s) =>
+        route.intermediateStations.includes(s.id)
+      ) || []
     );
   }, [route.intermediateStations, route.Line, route.lineId]);
 

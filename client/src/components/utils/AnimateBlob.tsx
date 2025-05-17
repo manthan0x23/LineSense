@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useSimulationStore } from "@/store/useSimulationStore";
 import { useMap } from "@vis.gl/react-google-maps";
-import type { Point } from "@/lib/data/type";
 import { useCoordinateStore } from "@/store/useCoordinate";
+import type { Point } from "@/lib/types";
 
 export const SimulateBlob = ({
   line,

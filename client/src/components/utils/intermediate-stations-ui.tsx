@@ -1,5 +1,5 @@
 
-import type { MetroLine, MetroStation } from "@/lib/types";
+import type {  MetroStation } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useRouteStore } from "@/store/useRouteStore";
 import { useSimulationStore } from "@/store/useSimulationStore";

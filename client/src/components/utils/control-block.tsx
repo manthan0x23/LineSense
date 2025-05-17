@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { useSimulationStore } from "@/store/useSimulationStore";
 
 const ControlPanel = () => {
   const { status, setStatus } = useSimulationStore((state) => state);
 
   const handleStart = () => setStatus("running");
-  const handlePause = () => setStatus("paused");
-  const handleResume = () => setStatus("running");
   const handleReset = () => {
     window.location.reload();
   };
@@ -21,9 +19,11 @@ const ControlPanel = () => {
           </Button>
         )}
 
-        {status == "running" && <Button onClick={handleReset} variant="destructive" className="w-24">
-          Reset
-        </Button>}
+        {status == "running" && (
+          <Button onClick={handleReset} variant="destructive" className="w-24">
+            Reset
+          </Button>
+        )}
       </div>
     </Card>
   );
