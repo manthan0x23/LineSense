@@ -12,6 +12,7 @@ import { updateRouter } from "./api/update-routes.js";
 dotenv.config();
 
 const app = express();
+
 app.use(
   cors({
     origin: Env.CLIENT_URL,
@@ -25,6 +26,11 @@ app.use(bodyParser.json());
 app.use("/admin", authRouter);
 app.use("/data", dataRouter);
 app.use("/update", authenticateAdmin, updateRouter);
+
+app.get("/test", (req, res) => {
+  console.log("Test route hit");
+  return res.json({ mss: "Server running fine" });
+});
 
 const PORT = Env.PORT || 3000;
 app.listen(PORT, () => {
